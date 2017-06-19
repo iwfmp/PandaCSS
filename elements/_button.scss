@@ -1,0 +1,22 @@
+/* ==========================================================================
+   #BUTTONS
+   ========================================================================== */
+
+/**
+ * Default styling to button elements.
+ *
+ * 1. Bring IE into line.
+ * 2. Reset/normalize some styles.
+ * 3. Fix bugy inheritence in webkit.
+ * 4. Force all button-styled elements to appear clickable.
+ */
+
+button {
+  -webkit-font-smoothing: inherit; /* [3] */
+  background: none; /* [2] */
+  border: 0; /* [2] */
+  cursor: pointer; /* [4] */
+  font: inherit; /* [2] */
+  letter-spacing: inherit; /* [2] */
+  overflow: visible; /* [1] */
+}

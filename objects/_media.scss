@@ -1,0 +1,120 @@
+/* ==========================================================================
+   #MEDIA
+   ========================================================================== */
+
+/**
+ * Modern implementation of media/media object
+ * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
+ *
+ * 1. Default to aligning content to their middles.
+ */
+
+.o-media {
+  display: flex;
+  flex: 1;
+  align-items: center; /* [1] */
+}
+
+
+
+
+
+/**
+ * media images have a space between them and the body of the object.
+ *
+ * 1. Force `.media__img` to take up as little space as possible.
+ */
+
+.o-media__img {
+  flex: 0 0 auto; /* [1] */
+  margin-bottom: 0;
+
+  > img {
+    display: block;
+  }
+}
+
+
+/**
+ * The container for the main content of the media object.
+ *
+ * 1. Forces the `.media__body` to take up all remaining space.
+ */
+
+.o-media__body {
+  flex: 1 1 auto; /* [1] */
+
+  &,
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+}
+
+
+
+
+
+/* Size variants.
+   ========================================================================== */
+
+@each $name, $value in $global-spacing-sizes {
+
+  .o-media#{$name} {
+
+    > .o-media__img {
+      margin-right: $value;
+    }
+
+    &.o-media--reverse {
+
+      > .o-media__img {
+        margin-left: $value;
+      }
+
+    }
+
+  }
+
+}
+
+
+
+
+
+/* Reversed media.
+   ========================================================================== */
+
+/**
+ * 1. Swap the rendered direction of the object…
+ * 2. Reassign margins to the correct sides.
+ */
+
+.o-media--reverse {
+  flex-direction: row-reverse; /* [1] */
+
+  > .o-media__img {
+    margin-right: 0; /* [2] */
+  }
+
+}
+
+
+
+
+
+/* Alignment variants.
+   ========================================================================== */
+
+/**
+ * Vertically align the image- and body-content differently.
+ * Defaults to middle.
+ */
+
+.o-media--top {
+  align-items: flex-start;
+}
+
+.o-media--top {
+  align-items: flex-end;
+}

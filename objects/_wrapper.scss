@@ -1,0 +1,37 @@
+/* ==========================================================================
+   #WRAPPERS
+   ========================================================================== */
+
+/**
+ * Page-level constraining and wrapping elements.
+ */
+
+$wrapper-width: 1200px !default;
+
+/* stylelint-disable */
+@if (type-of($wrapper-width) != number) {
+  @error "`#{$wrapper-width}` needs to be a number."
+}
+/* stylelint-enable */
+
+.o-wrapper {
+  margin-right: auto;
+  margin-left:  auto;
+  max-width: $wrapper-width;
+}
+
+
+
+
+
+/* Size variants.
+   ========================================================================== */
+
+@each $name, $value in $global-spacing-sizes {
+
+  .o-wrapper#{$name} {
+    padding-right: #{$value};
+    padding-left:  #{$value};
+  }
+
+}

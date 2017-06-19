@@ -1,0 +1,65 @@
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+
+/**
+ * Set background color and inverted text color using the color-invert function.
+ * This will apply globally instead of defining for each object/component,
+ * thus reduce the code significantly.
+ * SVGs accept fill color instead of background.
+ */
+
+$global-colors: (
+  'white':     $color-white,
+  'light':     $color-gray-gallery,
+
+  'primary':    $color-yellow-sun,
+  'secondary':  $color-blue-space,
+  'brand':      $color-blue-moody,
+  'cta':        $color-green-atlantis,
+  'info':       $color-blue-dodger,
+  'success':    $color-green-emerald,
+  'danger':     $color-red-carnation
+) !default;
+
+@each $name, $value in $global-colors {
+
+  .u-color-#{$name} {
+
+    background: $value;
+    color: color-invert($value);
+
+  }
+
+  svg.u-color-#{$name} {
+    background: none;
+    fill: $value;
+  }
+
+}
+
+
+
+
+
+/**
+ * Set just text colors, when the inverted color isn't sufficient.
+ */
+
+$global-colors-text: (
+  'white':     $color-white,
+  'black':     $color-black,
+  'light':     $color-gray-gallery,
+  'dark':      $color-gray-boulder,
+
+  'primary':   $color-gray-mineshaft,
+  'secondary': $color-gray-silver
+) !default;
+
+@each $name, $value in $global-colors-text {
+
+  .u-color-text-#{$name} {
+    color: $value;
+  }
+
+}

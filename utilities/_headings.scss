@@ -1,0 +1,29 @@
+/* ==========================================================================
+   #HEADINGS
+   ========================================================================== */
+
+/**
+ * Redefine all of our basic heading styles against utility classes so as to
+ * allow for double stranded heading hierarchy, e.g. we semantically need an H2,
+ * but we want it to be sized like an H1:
+ *
+ *   <h2 class="u-h1"></h2>
+ *
+ */
+
+$font-sizes: (
+  'h1':  58px,
+  'h2':  40px,
+  'h3':  32px,
+  'h4':  28px,
+  'h5':  20px,
+  'h6':  16px
+) !default;
+
+@each $name, $value in $font-sizes {
+
+  .u-#{$name} {
+    @include font-size($value);
+  }
+
+}

@@ -1,0 +1,96 @@
+/* ==========================================================================
+   #PACK
+   ========================================================================== */
+
+/**
+ * The pack object simply causes any number of elements pack up horizontally.
+ *
+ * 1. Fill all available space.
+ * 2. Default to aligning content to their center.
+ */
+
+.o-pack {
+  align-items: center; /* [2] */
+  display: flex;
+  justify-content: space-around;
+  width: 100%; /* [1] */
+}
+
+
+/**
+ * Items within a pack object. There should only ever be one of each.
+ *
+ * 1. Force `.pack__item` to take up as little space as possible.
+ * 2. Pack within a pack should only stretch as flex.
+ * 3. Remove default vertical flow.
+ */
+
+.o-pack__item {
+  flex: 0 0 auto; /* [1] */
+  margin-bottom: 0; /* [3] */
+
+  &.o-pack { flex: 1; } /* [2] */
+}
+
+
+
+
+
+/* Alignment variants.
+   ========================================================================== */
+
+/**
+ * Vertically align the pack items differently. Defaults to top.
+ */
+
+.o-pack--top {
+  align-items: flex-start;
+}
+
+.o-pack--bottom {
+  align-items: flex-end;
+}
+
+.o-pack--between {
+  justify-content: space-between;
+}
+
+
+
+
+
+/* Size variants.
+   ========================================================================== */
+
+/**
+ * 1. Stretch the items both axis.
+ */
+
+.o-pack--stretch {
+
+  .o-pack__item {
+    flex: 1; /* [1] */
+    align-self: stretch; /* [1] */
+  }
+
+}
+
+
+/**
+ * Multi line grid-like flexbox solution.
+ * Good for mobile views when children are not entirely fluid (width/flex-basis).
+ * It's absolutely necessary to have (n-1) empty items.
+ * Hacky but works, until grid laytout is available.
+ * https://stackoverflow.com/a/22018710
+ *
+ * 1. Collapse items to newline if exceeds the parent width.
+ * 2. Collapse empty items. For faking align to left in grid.
+ */
+
+.o-pack--wrap {
+  flex-wrap: wrap; /* [1] */
+
+  .o-pack__item:empty {
+    height: 0; /* [2] */
+  }
+}

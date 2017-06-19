@@ -1,0 +1,36 @@
+/* ==========================================================================
+   #IMAGES
+   ========================================================================== */
+
+/**
+ * Define image utilities such as square sizes and rounded images.
+ * This could apply to images as well as SVGs as a generic approach using
+ * global-spacing-sizes, added the ADDITIONAL, more specific, image-sizes map.
+ */
+
+$image-sizes: (
+  '--icon':    20px,
+  '--avatar':  30px,
+  '--gallery': 80px,
+  '--thumb':   120px
+) !default;
+
+$merged-image-sizes: map-merge($image-sizes, $global-spacing-sizes);
+
+@each $namee, $value in $merged-image-sizes {
+
+  .u-img#{$namee} {
+    height: $value;
+    width: $value;
+  }
+
+}
+
+
+/**
+ * Round images
+ */
+
+.u-img--round {
+  border-radius: 50%;
+}

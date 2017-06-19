@@ -1,0 +1,23 @@
+// ========================================================================
+// #Z-INDEX
+// ========================================================================
+
+// Mixin to ease the use of z-index.
+// https://css-tricks.com/handling-z-index/
+
+$z-layers: (
+  under: -1,
+  default: 1,
+  dropdown: 3000,
+  overlay: 4000,
+  modal: 4001
+);
+
+@function z($key) {
+  @if map-has-key($z-layers, $key) {
+    @return map-get($z-layers, $key);
+  }
+
+  // @warn 'Unknown `#{$key}` in $z-layers.';
+  @return null;
+}

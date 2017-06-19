@@ -1,0 +1,16 @@
+/* ========================================================================
+   #DISABLED
+   ======================================================================== */
+
+/**
+ * Disable elements, both visually and technically.
+ *
+ * 1. Pass through the elemet completely.
+ * 2. Visually show the element as disabled.
+ */
+
+.u-disabled {
+  cursor: default;
+  opacity: .4; /* [2] */
+  pointer-events: none; /* [1] */
+}

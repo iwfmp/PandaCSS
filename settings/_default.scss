@@ -1,0 +1,98 @@
+// ==========================================================================
+// #DEFAULT VARIABLES
+// ==========================================================================
+
+// The default settings file contains default project-wide variables;
+// things that need to be made available to the entire codebase.
+//
+// Adjusting these defaults should be in a new file, with care to other scss
+// files who might depend on them.
+
+// ==========================================================================
+// #COLORS
+// ==========================================================================
+
+// Color variable naming is a challenge. Simple 'green-yellow' or 'color-error'
+// proves to be error prone and clutters the code base.
+// Generic color naming, later assigned to 'roles' in colors utilities might
+// be a fair enough solution.
+// https://davidwalsh.name/sass-color-variables-dont-suck
+
+$color-black:           #000000 !default;
+$color-gray-mineshaft:  #252525 !default;
+$color-gray-boulder:    #757575 !default;
+$color-gray-silver:     #a2a2a2 !default;
+$color-gray-hit:        #a1adb5 !default;
+$color-gray-gallery:    #eaeaea !default;
+$color-white:           #ffffff !default;
+
+$color-blue-moody:      #7c88cf !default;
+$color-green-atlantis:  #8bd738 !default;
+$color-blue-space:      #313d41 !default;
+$color-yellow-sun:      #fdcd3b !default;
+$color-blue-dodger:     #00b4ff !default;
+$color-red-carnation:   #f84462 !default;
+$color-green-emerald:   #41d56a !default;
+
+
+
+
+
+// ==========================================================================
+// #UI
+// ==========================================================================
+
+// General UI values such as box shadow, border radius and transitions are
+// set here. They are a common set of values we expect to use in the project,
+// otherwise defined per-componenet.
+
+$global-border:           2px solid transparent!default;
+$global-radius:           10px !default;
+$global-transition:       all 300ms ease-in-out !default;
+$global-shadow:           0 8px 5px rgba($color-black, .1) !default;
+$global-text-shadow:      0 2px 4px rgba($color-black, .5) !default;
+
+
+
+
+
+// ==========================================================================
+// #TYPOGRAPHY
+// ==========================================================================
+
+// Typography values set the default for text needs. Mostly font families,
+// font sizes and line height. Headings sizes are set in headings utility,
+// and text color are in color utility.
+
+$global-font-family:       'Lato', sans-serif !default;
+$global-font-family-bold:  'Montserrat', sans-serif !default;
+$global-font-size:         16px !default;
+$global-line-height:       24px !default;
+
+$global-weight-light:      300 !default;
+$global-weight-semibold:   500 !default;
+
+
+
+
+
+// ==========================================================================
+// #SIZES
+// ==========================================================================
+
+// Spacing values are determined based on your project’s global line height (i.e
+// your baseline grid). It is not recommended that you modify these following
+// variables (it can break your vertical rhythm), but if you need to, you can.
+
+$global-spacing-unit: $global-line-height !default;
+
+$global-spacing-sizes: (
+  null:        $global-spacing-unit,
+  '--tiny':    round($global-spacing-unit * 0.25),
+  '--small':   round($global-spacing-unit * 0.5),
+  '--large':   round($global-spacing-unit * 2),
+  '--larger':  round($global-spacing-unit * 3),
+  '--huge':    round($global-spacing-unit * 4),
+  '--huger':   round($global-spacing-unit * 5),
+  '--flush':   0
+) !default;

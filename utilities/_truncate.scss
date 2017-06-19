@@ -1,0 +1,32 @@
+/* ==========================================================================
+   #TRUNCATE
+   ========================================================================== */
+
+/**
+ * Truncate single line
+ */
+
+.u-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/**
+ * Truncate multi line:
+ * https://css-tricks.com/line-clampin/
+ *
+ * Not supported by Firefox, Edge & IE.
+ */
+
+.u-truncate-multi {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  display: block;
+  height: 4.5em;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,13 @@
+/* ==========================================================================
+   #WRAP WORD
+   ========================================================================== */
+
+/**
+ * Break word utility
+ */
+
+.u-wrap-word {
+  overflow-wrap: break-word;
+  word-break: break-all;
+  word-wrap: break-word;
+}

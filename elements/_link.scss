@@ -1,0 +1,17 @@
+/* ==========================================================================
+   #LINKS
+   ========================================================================== */
+
+/**
+ * Saner defaults to a elements.
+ * In most cases the default blue underlined color is unwanted.
+ * Having the element text default to its surrounding makes much more sense.
+ *
+ * 1. Inherit the same color as the surrounding text by default.
+ * 2. Remove the default underline.
+ */
+
+a {
+  color: inherit; /* [1] */
+  text-decoration: none; /* [2] */
+}
