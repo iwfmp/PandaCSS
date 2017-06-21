@@ -1,0 +1,36 @@
+/* ==========================================================================
+   # Overlay
+   ========================================================================== */
+
+/**
+ * Very simple overlay and modal object abstraction.
+ */
+
+.c-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+
+  display: flex;
+}
+
+
+/**
+ * Modal can be located anywhere within the overlay space.
+ * Easiest is to use margin auto declarations.
+ * https://hackernoon.com/flexbox-s-best-kept-secret-bd3d892826b6
+ *
+ * 1. Initially locate the modal @pefect cetner.
+ */
+
+.c-overlay__modal {
+  margin: auto; /* [1] */
+}
+
+
+.c-overlay__modal--top {
+  margin-top: 0;
+}
