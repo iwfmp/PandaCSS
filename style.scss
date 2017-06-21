@@ -52,6 +52,7 @@
 // ==========================================================================
 @import 'objects/block';
 @import 'objects/box';
+@import 'objects/btn';
 @import 'objects/crop';
 @import 'objects/media';
 @import 'objects/pack';
@@ -63,5 +64,4 @@
 // ==========================================================================
 // Components
 // ==========================================================================
-@import 'components/btn';
-@import 'components/modal';
+@import 'components/nav';

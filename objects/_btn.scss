@@ -11,7 +11,7 @@
  * 5. Force all button-styled elements to appear clickable.
  */
 
-.c-btn {
+.o-btn {
   border-radius: $global-radius;
   cursor: pointer; /* [5] */
   display: inline-block; /* [1] */
@@ -40,7 +40,7 @@
 
 $btn-ghost-border-width: 2px;
 
-.c-btn--ghost {
+.o-btn--ghost {
   border-width: $btn-ghost-border-width;
   border-color: currentColor; /* [1] */
 
