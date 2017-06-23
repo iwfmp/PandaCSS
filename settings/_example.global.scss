@@ -1,0 +1,28 @@
+// ==========================================================================
+// #GLOBAL VARIABLES
+// ==========================================================================
+
+// The global settings file contains default variables overrides;
+// Set it according to your specific project needs.
+
+$color-yellow-lace:     #fdf6e3;
+$color-blue-space:      #313d41;
+
+$color-gray-mineshaft:  #252525;
+$color-white:           #ffffff;
+$color-black:           #000000;
+$color-gray-silver:     #a2a2a2;
+
+$global-colors: (
+  'white':     $color-white,
+  'light':     $color-yellow-lace,
+);
+
+$global-colors-text: (
+  'white':     $color-white,
+  'black':     $color-black,
+  'primary':   $color-blue-space,
+  'secondary': $color-gray-silver
+);
+
+$color-invert: $color-blue-space;
