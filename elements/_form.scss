@@ -1,0 +1,23 @@
+/* ==========================================================================
+   #FORM
+   ========================================================================== */
+
+/**
+ * Default styling for various form elements.
+ *
+ * 1. Generally speaking, always fit form elements to 100%.
+ */
+
+input, textarea {
+  width: 100%; /* [1] */
+}
+
+/**
+ * 1. Remove resize option from browser. Who use that anyway?
+ * 2. Remove weird bottom spacing that happen occasionally.
+ */
+
+textarea {
+  resize: none; /* [1] */
+  display: block; /* [2] */
+}
