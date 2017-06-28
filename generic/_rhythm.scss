@@ -18,6 +18,8 @@ hr,
 table,
 fieldset {
   margin-bottom: $global-spacing-unit;
+
+  &:last-child { margin: 0; }
 }
 
 
