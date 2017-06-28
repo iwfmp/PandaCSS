@@ -21,8 +21,23 @@
   transition: $global-transition;
   vertical-align: middle; /* [2] */
 
-  &:hover { filter: brightness(95%); }
-  &.is-active { filter: brightness(90%); }
+  &:hover { filter: brightness(90%); }
+  &.is-active { filter: brightness(80%); }
+}
+
+
+
+
+
+/* Size variants
+   ========================================================================== */
+
+@each $name, $value in $global-spacing-sizes {
+
+  .o-btn#{$name} {
+    padding: #{$value / 2} #{$value};
+  }
+
 }
 
 
