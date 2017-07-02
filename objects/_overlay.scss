@@ -6,7 +6,7 @@
  * Very simple overlay and modal object abstraction.
  */
 
-.c-overlay {
+.o-overlay {
   display: none;
   height: 100%;
   left: 0;
@@ -15,7 +15,7 @@
   width: 100%;
   z-index: 1;
 
-  &.is-acitve { display: flex; }
+  &.is-active { display: flex; }
 }
 
 
@@ -27,11 +27,11 @@
  * 1. Initially locate the modal @pefect cetner.
  */
 
-.c-overlay__modal {
+.o-overlay__modal {
   margin: auto; /* [1] */
 }
 
 
-.c-overlay__modal--top {
+.o-overlay__modal--top {
   margin-top: 0;
 }

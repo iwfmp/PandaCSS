@@ -46,7 +46,7 @@ $color-green-emerald:   #41d56a !default;
 // set here. They are a common set of values we expect to use in the project,
 // otherwise defined per-componenet.
 
-$global-border:           2px solid transparent!default;
+$global-border:           1px solid currentColor !default;
 $global-radius:           10px !default;
 $global-transition:       all 300ms ease-in-out !default;
 $global-shadow:           0 8px 5px rgba($color-black, .1) !default;

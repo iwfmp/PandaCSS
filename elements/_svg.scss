@@ -4,8 +4,10 @@
 
 /**
  * 1. Get the color from utils (e.g. .u-color-text-primary) and set it as the fill.
+ * 2. Have all svg icons vertically aligned.
  */
 
 svg {
   fill: currentColor; /* [1] */
+  vertical-align: middle; /* [2] */
 }
