@@ -53,11 +53,12 @@
  * 1. Inherit text color using the magical 'currentColor'.
  */
 
-$btn-ghost-border-width: 2px;
+$btn-ghost-border-width: 1px;
 
 .o-btn--ghost {
   border-width: $btn-ghost-border-width;
   border-color: currentColor; /* [1] */
+  border-style: solid;
 
   &,
   &:hover,
