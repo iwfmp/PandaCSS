@@ -11,7 +11,9 @@
  * 5. Force all button-styled elements to appear clickable.
  */
 
-$btn-border-radius: 30px;
+$btn-border-radius: $global-border-width !default;
+$btn-min-width: 300px !default;
+$btn-transition: $global-transition !default;
 
 .o-btn {
   border-radius: $btn-border-radius;
@@ -19,8 +21,9 @@ $btn-border-radius: 30px;
   display: inline-block; /* [1] */
   font: inherit; /* [3] */
   margin: 0; /* [4] */
+  min-width: $btn-min-width;
   text-align: center; /* [4] */
-  transition: $global-transition;
+  transition: $btn-transition;
   vertical-align: middle; /* [2] */
 
   &:hover { filter: brightness(90%); }
@@ -40,9 +43,6 @@ $btn-border-radius: 30px;
     padding: #{$value / 2} #{$value};
   }
 
-  .o-btn-wide#{$name} {
-    padding: #{$value / 2} #{$value * 2};
-  }
 }
 
 
@@ -58,7 +58,7 @@ $btn-border-radius: 30px;
  * 1. Inherit text color using the magical 'currentColor'.
  */
 
-$btn-ghost-border-width: 1px;
+$btn-ghost-border-width: 1px !default;
 
 .o-btn--ghost {
   border-width: $btn-ghost-border-width;
