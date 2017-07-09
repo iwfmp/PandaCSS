@@ -8,10 +8,11 @@
 $z-layers: (
   under: -1,
   default: 1,
-  dropdown: 3000,
+  dropdown: 2000,
+  drawer: 3000,
   overlay: 4000,
   modal: 4001
-);
+) !default;
 
 @function z($key) {
   @if map-has-key($z-layers, $key) {

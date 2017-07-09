@@ -43,6 +43,28 @@ $global-colors: (
 
 
 /**
+ * Set just gradient background colors.
+ * Inverted colors are not supported.
+ */
+
+$global-gradients: (
+  'payment':     $bg-payment,
+  'congrats':    $bg-congrats,
+) !default;
+
+@each $name, $value in $global-gradients {
+
+  .u-gradient-#{$name} {
+    background-image: $value;
+  }
+
+}
+
+
+
+
+
+/**
  * Set just text colors, when the inverted color isn't sufficient.
  */
 
@@ -59,7 +81,7 @@ $global-colors-text: (
 @each $name, $value in $global-colors-text {
 
   .u-color-text-#{$name} {
-    color: $value;
+    color: $value !important;
   }
 
 }

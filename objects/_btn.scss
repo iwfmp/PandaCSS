@@ -11,8 +11,10 @@
  * 5. Force all button-styled elements to appear clickable.
  */
 
+$btn-border-radius: 30px;
+
 .o-btn {
-  border-radius: $global-radius;
+  border-radius: $btn-border-radius;
   cursor: pointer; /* [5] */
   display: inline-block; /* [1] */
   font: inherit; /* [3] */
@@ -38,6 +40,9 @@
     padding: #{$value / 2} #{$value};
   }
 
+  .o-btn-wide#{$name} {
+    padding: #{$value / 2} #{$value * 2};
+  }
 }
 
 
