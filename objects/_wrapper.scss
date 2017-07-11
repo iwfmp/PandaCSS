@@ -35,3 +35,15 @@ $wrapper-width: 1200px !default;
   }
 
 }
+
+
+
+
+
+/* Style variants.
+   ========================================================================== */
+
+.o-wrapper--fluid {
+  max-width: none;
+  width: 100%;
+}
