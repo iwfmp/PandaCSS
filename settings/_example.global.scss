@@ -5,24 +5,72 @@
 // The global settings file contains default variables overrides;
 // Set it according to your specific project needs.
 
-$color-yellow-lace:     #fdf6e3;
-$color-blue-space:      #313d41;
+$global-font-size:         14px;
+$global-line-height:       21px;
+$global-font-family:       'Lato', sans-serif;
 
-$color-gray-mineshaft:  #252525;
-$color-white:           #ffffff;
-$color-black:           #000000;
-$color-gray-silver:     #a2a2a2;
+
+
+
+
+// ==========================================================================
+// #UTILITIES
+// ==========================================================================
+
+// Headings
+// --------------------------------------------------------------------------
+
+$font-sizes: (
+  'h1':  58px,
+  'h2':  46px,
+  'h3':  37px,
+  'h4':  25px,
+  'h5':  20px,
+  'h6':  14px
+);
+
+
+// Colors
+// --------------------------------------------------------------------------
 
 $global-colors: (
   'white':     $color-white,
-  'light':     $color-yellow-lace,
+  'light':     $color-gray-gallery,
+  'lighter':   $color-gray-dashboard
 );
+
 
 $global-colors-text: (
   'white':     $color-white,
   'black':     $color-black,
-  'primary':   $color-blue-space,
+  'primary':   $color-gray-mineshaft,
   'secondary': $color-gray-silver
 );
 
+
+
+
+
+// ==========================================================================
+// #TOOLS
+// ==========================================================================
+
+// Color Invert
+// --------------------------------------------------------------------------
+
 $color-invert: $color-blue-space;
+$color-invert-o: $color-white;
+
+
+
+
+
+// ==========================================================================
+// #OBJECTS
+// ==========================================================================
+
+// Buttons
+// --------------------------------------------------------------------------
+
+$btn-border-radius: 30px;
+$btn-min-width: 150px;
