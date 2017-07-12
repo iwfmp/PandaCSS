@@ -29,6 +29,8 @@
 .u-pos--bottom {
   transform: translateX(-50%);
   left: 50%;
+
+  &.u-pos--stretch { width: 100%; }
 }
 
 .u-pos--top { top: 0; }
@@ -43,10 +45,12 @@
 .u-pos--right {
   transform: translateY(-50%);
   top: 50%;
+
+  &.u-pos--stretch { height: 100%; }
 }
 
 .u-pos--left { left: 0; }
-.u-pos--right { right: 0; }
+.u-pos--ight { right: 0; }
 
 
 /**

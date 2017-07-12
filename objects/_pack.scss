@@ -21,16 +21,17 @@
  * Items within a pack object. There should only ever be one of each.
  *
  * 1. Force `.pack__item` to take up as little space as possible.
- * 2. Pack within a pack should only stretch as flex.
+ * 2. Pack within a pack should stretch as flex.
  * 3. Remove default vertical flow.
  */
 
 .o-pack__item {
   flex: 0 0 auto; /* [1] */
   margin-bottom: 0; /* [3] */
-
-  &.o-pack { flex: 1; } /* [2] */
 }
+
+
+.o-pack__item--stretch { flex: 1; } /* [2] */
 
 
 
@@ -55,11 +56,15 @@
   justify-content: space-between;
 }
 
+.o-pack--center {
+  justify-content: center;
+}
 
 
 
 
-/* Size variants.
+
+/* Size variants
    ========================================================================== */
 
 /**
