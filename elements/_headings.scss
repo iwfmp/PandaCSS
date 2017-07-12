@@ -10,7 +10,6 @@
  * Thus allowing granular design with utility classes (E.g. .u-h1, .u-h2).
  *
  * 1. Make headings inherit the same size as the surrounding text by default.
- * 2. Have all headings be bold family. Specific for this site.
  */
 
 h1,
@@ -20,5 +19,4 @@ h4,
 h5,
 h6 {
   font-size: inherit; /* [1] */
-  font-family: $global-font-family-bold; /* [2] */
 }
