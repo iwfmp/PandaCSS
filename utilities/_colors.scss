@@ -10,16 +10,19 @@
  */
 
 $global-colors: (
-  'white':     $color-white,
-  'light':     $color-gray-gallery,
+  'white':      $color-white,
+  'light':      $color-gray-hit,
+  'dark':       $color-blue-space,
+  'primary':    $color-yellow-lace,
+  'secondary':  $color-green-mint,
 
-  'primary':    $color-yellow-sun,
-  'secondary':  $color-blue-space,
   'brand':      $color-blue-moody,
   'cta':        $color-green-atlantis,
   'info':       $color-blue-dodger,
   'success':    $color-green-emerald,
-  'danger':     $color-red-carnation
+  'danger':     $color-orange-grenadier,
+  'warning':    $color-yellow-sun,
+  'error':      $color-red-guardsman
 ) !default;
 
 @each $name, $value in $global-colors {
@@ -53,7 +56,7 @@ $global-colors-text: (
   'dark':      $color-gray-boulder,
 
   'primary':   $color-gray-mineshaft,
-  'secondary': $color-gray-silver
+  'secondary': $color-gray-hit
 ) !default;
 
 @each $name, $value in $global-colors-text {
