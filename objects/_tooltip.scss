@@ -79,7 +79,7 @@ $tooltip-positions: (
 .o-tooltip__message {
   border-radius: $global-radius; /* [2] */
   border: $tooltip-border-width solid currentColor; /* [3] */
-  // display: none; /* [1] */
+  display: none; /* [1] */
   position: absolute; /* [4] */
   width: $tooltip-message-width; /* [5] */
 }

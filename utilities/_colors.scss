@@ -37,7 +37,7 @@ $global-colors: (
   }
 
   svg.u-color-#{$name} {
-    background-color: none;
+    background-color: transparent;
     fill: $value;
   }
 
