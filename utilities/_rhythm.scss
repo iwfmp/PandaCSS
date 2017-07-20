@@ -4,40 +4,14 @@
 
 /**
  * Adding some vertical rhythm for elements it's not obvious for.
- *
- * 1. Add vertical rhythm to all but last childs.
  */
-
-.u-rhythm {
-  > * {
-    &:last-child { margin: 0; } /* [1] */
-  }
-}
-
-
-
-
-
-/* Size variants
-   ========================================================================== */
 
 @each $name, $value in $global-spacing-sizes {
 
   .u-rhythm#{$name} {
-    > * {
+    > *:not(:last-child) {
       margin-bottom: $value;
     }
   }
 
 }
-
-
-
-
-
-/* Media variants
-   ========================================================================== */
-
-/**
- * Sometimes the rhythm has to be adjusted according to screen resolution.
- */
