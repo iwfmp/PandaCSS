@@ -1,0 +1,142 @@
+/* ==========================================================================
+   # Form Fields
+   ========================================================================== */
+
+$form-field-border-radius: $global-radius !default;
+$form-field-border: $global-border !default;
+$form-field-prefix-bg: $color-gray-gallery !default;
+
+
+.o-field { position: relative; }
+
+
+
+
+
+/* Field Header
+   ========================================================================== */
+
+.o-field__header {
+  margin-bottom: $global-spacing-unit-small;
+}
+
+
+
+
+
+/* Field Body
+   ========================================================================== */
+
+.o-field__input {
+  border:  $form-field-border;
+  padding: $global-spacing-unit-small;
+}
+
+
+/**
+ * Field Group Styling.
+ * Prefix/Suffix can either be more input fields, icons or just plain text.
+ *
+ * 1. Apply border on all children of group (otherwise will overflow).
+ * 2. All children element are likely to have the same padding.
+ *    Can be adjusted in size variants.
+ * 3. Apply border radius only to first/last children (duh).
+ * 4. Remove border left from every child except the first one.
+ *    We set only the color to transparent so we can apply success/error colors easily
+ *    (See color variants section).
+ */
+
+.o-field__group {
+  display: flex;
+  align-items: stretch;
+
+  > * {
+    padding: $global-spacing-unit-small; /* [2] */
+    border: $form-field-border; /* [1] */
+  }
+
+
+  > :first-child { /* [3] */
+    border-top-left-radius: $form-field-border-radius;
+    border-bottom-left-radius: $form-field-border-radius;
+  }
+
+
+  > :last-child { /* [3] */
+    border-top-right-radius: $form-field-border-radius;
+    border-bottom-right-radius: $form-field-border-radius;
+  }
+
+
+  > :not(:first-child) { border-left-color: transparent; } /* [4] */
+}
+
+
+/**
+ * Field Input Styling.
+ * It should get the same values as part of an input group (padding/border),
+ * but added to the negated rule as a matter of convenience.
+ *
+ * 1. Apply border radius when not part of a field group.
+ */
+
+:not(.o-field__group) > .o-field__input {
+  border-radius: $form-field-border-radius; /* [1] */
+}
+
+
+/**
+ * Prefix and suffix basic design.
+ */
+.o-field__prefix,
+.o-field__suffix { background: $form-field-prefix-bg; }
+
+
+
+
+
+/* Field Footer
+   ========================================================================== */
+
+/**
+ * The field footer contains misc information like character count and hints/errors
+ */
+
+.o-field__footer {
+  align-items: center;
+  display: flex;
+  margin-top: 6px;
+}
+
+
+/**
+ * 1. Don't jump when showing the hint, in case there aren't other elements
+ *    to fill the footer space.
+ */
+.o-field__hint {
+  position: absolute; /* [1] */
+}
+
+
+/**
+ * 1. Have counter always to the right.
+ */
+
+.o-field__counter { margin-left: auto; } /* [1] */
+
+
+
+
+
+/* Color variants
+   ========================================================================== */
+
+@each $name, $value in $global-colors {
+
+  .o-field--#{$name} {
+    border-color: $value;
+
+    + .o-field__hint { color: $value; }
+  }
+
+}
