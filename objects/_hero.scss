@@ -1,0 +1,66 @@
+/* ==========================================================================
+   #HERO
+   ========================================================================== */
+
+/**
+ * The hero components gets the full viewport of the screen,
+ * and places the objects - header, body and footer - accordingly.
+ * The body element is at the perfect center regardless of the other elements
+ * dimensions, thus allows for a flexible layout and multiple variations.
+ *
+ * 1. Give full width/height dimensions to the hero object.
+ * 2. In case there's a media (video, image) have the parent container relative.
+ * 3. Children take each as little space as possible unless otherwise specified.
+ */
+
+.o-hero {
+  min-height: 100vh; /* [1] */
+  position: relative; /* [2] */
+  width: 100%; /* [1] */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > * { flex: 0 0 auto; } /* [3] */
+}
+
+
+/**
+ * This is actually where the 'magic' happens.
+ * Heros' body, as a general rule of thumb, is perfectly centered.
+ * Using only flexbox requires hacks, so let's use the best of both worlds -
+ * Perfect center the body using positioning, and header/footer using flex.
+ * That way if any part is missing it shouldn't spoil the rest,
+ * and so we get a much bigger flexibility.
+ *
+ * 1. Perfect center the heros' object body.
+ * 2. Simulate justify-contents' space-between but also when only footer
+ *    is present make it appear at the bottom.
+ */
+
+.o-hero__body { /* [1] */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.o-hero__header { margin-bottom: auto; } /* [2] */
+.o-hero__footer { margin-top: auto; } /* [2] */
+
+
+/**
+ * This is an optional element in case we want to show a specific media,
+ * like a video or an image over the whole hero container.
+ *
+ * 1. Stretch the hero media all over its parent.
+ * 2. Position the media underneath everything else.
+ * 3. Reset margin in case there is one.
+ */
+
+.o-hero__media {
+  @util position(absolute, 0 0 0 0); /* [1] */
+  z-index: z(under); /* [2] */
+  margin-bottom: 0 !important; /* [3] */
+}
