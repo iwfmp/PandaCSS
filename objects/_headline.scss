@@ -2,6 +2,11 @@
    #Headline
    ========================================================================== */
 
+/**
+ * Very simple headline object, for the cases of successive headlines.
+ * In these cases I usually don't want the 1st element to have margin bottom.
+ */
+
 .o-headline {
   > :first-child { margin-bottom: 0; }
 }
