@@ -9,6 +9,7 @@
 
 .o-headline {
   > :first-child { margin-bottom: 0; }
+  > * { white-space: nowrap; }
 }
 
 
