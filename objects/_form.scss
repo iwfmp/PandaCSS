@@ -7,7 +7,9 @@ $form-field-border: $global-border !default;
 $form-field-prefix-bg: $color-gray-gallery !default;
 
 
-.o-field { position: relative; }
+.o-field {
+  position: relative;
+}
 
 
 
@@ -89,7 +91,9 @@ $form-field-prefix-bg: $color-gray-gallery !default;
  * Prefix and suffix basic design.
  */
 .o-field__prefix,
-.o-field__suffix { background: $form-field-prefix-bg; }
+.o-field__suffix {
+  background: $form-field-prefix-bg;
+}
 
 
 

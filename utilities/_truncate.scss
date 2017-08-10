@@ -20,6 +20,8 @@
  * Not supported by Firefox, Edge & IE.
  */
 
+/* stylelint-disable value-no-vendor-prefix */
+
 .u-truncate-multi {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
@@ -30,3 +32,5 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+/* stylelint-enable value-no-vendor-prefix */

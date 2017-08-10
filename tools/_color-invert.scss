@@ -29,7 +29,7 @@ $color-invert-o: $color-white !default;
   @each $name, $value in $color-rgb {
     $value: $value / 255;
 
-    @if $value < 0.03928 {
+    @if $value < .03928 {
       $value: $value / 12.92;
     }
 
@@ -59,7 +59,7 @@ $color-invert-o: $color-white !default;
 
 @function color-invert($color) {
 
-  @if (luminance($color) > 0.55) {
+  @if (luminance($color) > .55) {
     @return $color-invert;
   }
 

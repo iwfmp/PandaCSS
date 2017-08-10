@@ -9,10 +9,10 @@
  */
 
 $image-sizes: (
-  '--icon':    20px,
-  '--avatar':  45px,
-  '--gallery': 80px,
-  '--thumb':   120px
+  "--icon":    20px,
+  "--avatar":  45px,
+  "--gallery": 80px,
+  "--thumb":   120px
 ) !default;
 
 $merged-image-sizes: map-merge($image-sizes, $global-spacing-sizes);

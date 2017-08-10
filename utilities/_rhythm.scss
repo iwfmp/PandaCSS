@@ -9,9 +9,11 @@
 @each $name, $value in $global-spacing-sizes {
 
   .u-rhythm#{$name} {
+
     > *:not(:last-child) {
       margin-bottom: $value;
     }
+
   }
 
 }

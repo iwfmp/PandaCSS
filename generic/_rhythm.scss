@@ -17,7 +17,11 @@ figure,
 hr,
 table,
 fieldset {
-  &:not(:last-child) {margin-bottom: $global-spacing-unit; }
+
+  &:not(:last-child) {
+    margin-bottom: $global-spacing-unit;
+  }
+
 }
 
 

@@ -28,10 +28,10 @@ $tooltip-message-width: 300px !default;
 $tooltip-triangle-width: 16px !default;
 
 $tooltip-positions: (
-  'top':     (bottom, right),
-  'right':   (left, bottom),
-  'bottom':  (top, left),
-  'left':    (right, top)
+  "top":     (bottom, right),
+  "right":   (left, bottom),
+  "bottom":  (top, left),
+  "left":    (right, top)
 ) !default;
 
 
@@ -99,11 +99,10 @@ $tooltip-positions: (
 
 .o-tooltip__message::before {
   @util size(#{$tooltip-triangle-width}); /* [1] */
-
   background: inherit; /* [2] */
   border: inherit; /* [2] */
   border-width: 0;  /* [4] */
-  content: '';
+  content: "";
   display: block; /* [1] */
   position: absolute; /* [3] */
   transform: rotate(45deg); /* [1] */
@@ -118,8 +117,8 @@ $tooltip-positions: (
 
 @each $pos-name, $pos-value in $tooltip-positions {
 
-  $primary-axis:   nth($pos-value,1);
-  $secondary-axis: nth($pos-value,2);
+  $primary-axis:   nth($pos-value, 1);
+  $secondary-axis: nth($pos-value, 2);
 
 
 /**
@@ -132,14 +131,13 @@ $tooltip-positions: (
  */
 
   .o-tooltip__message--#{$pos-name} {
-
     #{$primary-axis}: calc(100% + #{$tooltip-triangle-width}); /* [1] */
     #{$secondary-axis}: 50%; /* [2] */
 
-    @if $secondary-axis == 'left' { transform: translateX(-50%); }  /* [3] */
-    @else if $secondary-axis == 'right'  { transform: translateX(50%); }  /* [3] */
-    @else if $secondary-axis == 'top' { transform: translateY(-50%); }  /* [3] */
-    @else if $secondary-axis == 'bottom' { transform: translateY(50%); }  /* [3] */
+    @if $secondary-axis == "left" { transform: translateX(-50%); } /* [3] */
+    @else if $secondary-axis == "right" { transform: translateX(50%); } /* [3] */
+    @else if $secondary-axis == "top" { transform: translateY(-50%); } /* [3] */
+    @else if $secondary-axis == "bottom" { transform: translateY(50%); } /* [3] */
 
   }
 
@@ -155,16 +153,12 @@ $tooltip-positions: (
  */
 
   .o-tooltip__message--#{$pos-name}::before {
-
     #{$primary-axis}: -#{$tooltip-triangle-width / 2}; /* [1] */
     margin-#{$primary-axis}: -1px; /* [2] */
-
     #{$secondary-axis}: 50%; /* [3] */
     margin-#{$secondary-axis}: -#{$tooltip-triangle-width / 2}; /* [3] */
-
     border-#{$primary-axis}-width: $tooltip-border-width; /* [4] */
     border-#{$secondary-axis}-width: $tooltip-border-width; /* [4] */
-
   }
 
 }

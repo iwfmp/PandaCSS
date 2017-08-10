@@ -7,7 +7,7 @@
 
 $global-font-size:         14px;
 $global-line-height:       21px;
-$global-font-family:       'Lato', sans-serif;
+$global-font-family:       "Lato", sans-serif;
 
 
 
@@ -21,12 +21,12 @@ $global-font-family:       'Lato', sans-serif;
 // --------------------------------------------------------------------------
 
 $font-sizes: (
-  'h1':  58px,
-  'h2':  46px,
-  'h3':  37px,
-  'h4':  25px,
-  'h5':  20px,
-  'h6':  14px
+  "h1":  58px,
+  "h2":  46px,
+  "h3":  37px,
+  "h4":  25px,
+  "h5":  20px,
+  "h6":  14px
 );
 
 
@@ -34,17 +34,17 @@ $font-sizes: (
 // --------------------------------------------------------------------------
 
 $global-colors: (
-  'white':     $color-white,
-  'light':     $color-gray-gallery,
-  'lighter':   $color-gray-dashboard
+  "white":     $color-white,
+  "light":     $color-gray-gallery,
+  "lighter":   $color-gray-dashboard
 );
 
 
 $global-colors-text: (
-  'white':     $color-white,
-  'black':     $color-black,
-  'primary':   $color-gray-mineshaft,
-  'secondary': $color-gray-silver
+  "white":     $color-white,
+  "black":     $color-black,
+  "primary":   $color-gray-mineshaft,
+  "secondary": $color-gray-silver
 );
 
 
