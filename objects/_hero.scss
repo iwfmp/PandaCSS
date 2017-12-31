@@ -20,6 +20,7 @@
   height: 100vh; /* [1] */
   position: relative; /* [2] */
   width: 100%; /* [1] */
+  overflow: hidden;
 
   > * { flex: 0 0 auto; } /* [3] */
 }
@@ -59,7 +60,9 @@
  */
 
 .o-hero__media {
-  @util position(absolute, 0 0 0 0); /* [1] */
+  @util position(absolute, 50% null null 50%); /* [1] */
+  transform: translate(-50%, -50%);
+  width: 100%;
   z-index: z(under); /* [2] */
   margin-bottom: 0 !important; /* [3] */
 }

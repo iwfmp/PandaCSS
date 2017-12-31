@@ -22,7 +22,7 @@ img {
  *    not make the image fluid.
  */
 
-img[width], /* [1] */
-img[height] {  /* [1] */
-  max-width: none;
+img[width],
+img[height] {
+  max-width: none; /* [1] */
 }
