@@ -15,7 +15,7 @@
 // @return {Number}
 // @link http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef Reference
 
-$color-invert: $color-gray-mineshaft !default;
+$color-invert: $global-font-color !default;
 $color-invert-o: $color-white !default;
 
 @function luminance($color) {
@@ -59,7 +59,7 @@ $color-invert-o: $color-white !default;
 
 @function color-invert($color) {
 
-  @if (luminance($color) > .55) {
+  @if (luminance($color) > .60) {
     @return $color-invert;
   }
 

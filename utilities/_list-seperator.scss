@@ -1,0 +1,28 @@
+/* ==========================================================================
+   #LIST SEPERATOR
+   ========================================================================== */
+
+$seperator-min-height: $global-spacing-unit !default;
+$seperator-width: 2px !default;
+
+/**
+* Seperator between list items.
+* Intended to be mostly called from a psuedo-element using @extend.
+* Actual distance from the list item should be handled w/ margin/padding.
+*
+* 1. Get the current color and use as the seperator.
+* 2. But give it some fade, otherwise it's usually too strong.
+* 3. Usually a desired height, set w/ a minimum.
+* 4. Place it exactly between 2 tangent items.
+*/
+
+.u-list-seperator {
+  @extend .u-pos--vertical;
+  background: currentColor; /* [1] */
+  content: '';
+  height: calc(100% / 3); /* [3] */
+  left: -#{$seperator-width / 2}; /* [4] */
+  min-height: $seperator-min-height; /* [3] */
+  opacity: .5; /* [2] */
+  width: $seperator-width; /* [4] */
+}

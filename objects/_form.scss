@@ -2,13 +2,18 @@
    # Form Fields
    ========================================================================== */
 
-$form-field-border-radius: $global-radius !default;
-$form-field-border: $global-border !default;
-$form-field-prefix-bg: $color-gray-gallery !default;
+:root {
+  --form-field-border-radius: 0;
+  --form-field-border: #{$global-border};
+  --form-field-spacing: #{$global-spacing-unit-small};
+}
 
+/**
+ * 1. Prepare to absolute position items, E.g. hint/dropdown etc.
+ */
 
 .o-field {
-  position: relative;
+  position: relative; /* [1] */
 }
 
 
@@ -19,7 +24,7 @@ $form-field-prefix-bg: $color-gray-gallery !default;
    ========================================================================== */
 
 .o-field__header {
-  margin-bottom: $global-spacing-unit-small;
+  margin-bottom: var(--form-field-spacing);
 }
 
 
@@ -29,9 +34,16 @@ $form-field-prefix-bg: $color-gray-gallery !default;
 /* Field Body
    ========================================================================== */
 
+/**
+ * 1. Background color, if any, is applied on the o-field/o-field__group.
+ * 2. inherit the color from the inverted bg, or from text.
+ */
+
 .o-field__input {
-  border:  $form-field-border;
-  padding: $global-spacing-unit-small;
+  border: var(--form-field-border);
+  padding: var(--form-field-spacing);
+  background: transparent; /* [1] */
+  color: inherit; /* [2] */
 }
 
 
@@ -39,38 +51,57 @@ $form-field-prefix-bg: $color-gray-gallery !default;
  * Field Group Styling.
  * Prefix/Suffix can either be more input fields, icons or just plain text.
  *
- * 1. Apply border on all children of group (otherwise will overflow).
+ * 1. Apply border on group instead of children.
  * 2. All children element are likely to have the same padding.
  *    Can be adjusted in size variants.
- * 3. Apply border radius only to first/last children (duh).
- * 4. Remove border left from every child except the first one.
- *    We set only the color to transparent so we can apply success/error colors easily
- *    (See color variants section).
+ * 3. Inherit proper border radius to first/last children to prevent overflow.
+ *    Also remove others, in case they are declared elsewhere (E.g. o-btn).
+ * 4. Apply border between inner group elements, if need be.
+ * 5. Button/Submit should keep their border radius and well as bigger right/left pad.
+ * 6. Input should always stretch for the remaining width, if any. EXPERIMENTAL.
  */
 
 .o-field__group {
   display: flex;
   align-items: stretch;
+  border: var(--form-field-border); /* [1] */
+  border-radius: var(--form-field-border-radius);
 
   > * {
-    padding: $global-spacing-unit-small; /* [2] */
-    border: $form-field-border; /* [1] */
+    padding: var(--form-field-spacing); /* [2] */
+    border: 0; /* [1] */
   }
 
 
   > :first-child { /* [3] */
-    border-top-left-radius: $form-field-border-radius;
-    border-bottom-left-radius: $form-field-border-radius;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: inherit;
+    border-top-right-radius: 0;
   }
 
 
   > :last-child { /* [3] */
-    border-top-right-radius: $form-field-border-radius;
-    border-bottom-right-radius: $form-field-border-radius;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: inherit;
+    border-top-left-radius: 0;
+    border-top-right-radius: inherit;
   }
 
 
-  > :not(:first-child) { border-left-color: transparent; } /* [4] */
+  > .o-btn { /* [5] */
+    padding-right: calc(var(--form-field-spacing) * 2);
+    padding-left: calc(var(--form-field-spacing) * 2);
+    border-radius: inherit;
+  }
+
+
+  > .o-field__input { flex: 1; } /* [6] */
+}
+
+
+.o-field__group--bordered {
+  > :not(:last-child) { border-right: inherit; } /* [4] */
 }
 
 
@@ -83,17 +114,55 @@ $form-field-prefix-bg: $color-gray-gallery !default;
  */
 
 :not(.o-field__group) > .o-field__input {
-  border-radius: $form-field-border-radius; /* [1] */
+  border-radius: var(--form-field-border-radius); /* [1] */
 }
 
 
 /**
  * Prefix and suffix basic design.
  */
+
 .o-field__prefix,
 .o-field__suffix {
-  background: $form-field-prefix-bg;
+  background: inherit;
 }
+
+
+
+
+
+/* Field Dropdowns
+   ========================================================================== */
+
+/**
+ * Field dropdowns are siblings to either o-field__input or o-field__group,
+ *
+ * 1. Hide initially. Triggered either w/ JS or hover.
+ * 2. Position just below, above and give full width.
+ */
+
+.o-field__dropdown {
+  border: var(--form-field-border);
+  display: none; /* [1] */
+  padding: var(--form-field-spacing);
+
+  position: absolute; /* [2] */
+  top: 100%; /* [2] */
+  width: 100%; /* [2] */
+  z-index: z(dropdown); /* [2] */
+}
+
+.o-field__option {
+  padding: calc(var(--form-field-spacing) / 2);
+  text-align: left;
+}
+
+
+/**
+ * Autocomplete hint while typing.
+ */
+
+.o-field__hint { color: currentColor; }
 
 
 
@@ -103,13 +172,15 @@ $form-field-prefix-bg: $color-gray-gallery !default;
    ========================================================================== */
 
 /**
- * The field footer contains misc information like character count and hints/errors
+ * The field footer contains misc information like character count and hints/errors.
+ *
+ * 1. Give margin top because footer is not always present.
  */
 
 .o-field__footer {
   align-items: center;
   display: flex;
-  margin-top: 6px;
+  margin-top: calc(var(--form-field-spacing) / 2); /* [1] */
 }
 
 
@@ -117,8 +188,10 @@ $form-field-prefix-bg: $color-gray-gallery !default;
  * 1. Don't jump when showing the hint, in case there aren't other elements
  *    to fill the footer space.
  */
-.o-field__hint {
-  position: absolute; /* [1] */
+
+.o-field__help {
+  // position: absolute; /* [1] */
+  margin-top: $global-spacing-unit-tiny;
 }
 
 
@@ -140,7 +213,7 @@ $form-field-prefix-bg: $color-gray-gallery !default;
   .o-field--#{$name} {
     border-color: $value;
 
-    + .o-field__hint { color: $value; }
+    + .o-field__help { color: $value; }
   }
 
 }

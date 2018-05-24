@@ -1,0 +1,29 @@
+// https://css-tricks.com/molten-leading-css/
+
+@import 'font-size';
+@import 'mq';
+@import 'strip-unit';
+
+@mixin responsive-font (
+  $min-font: $global-line-height / 2,
+  $max-font: $global-line-height,
+  $min-width: tablet,
+  $max-width: desktop
+  ) {
+
+  $min-width-value: strip-unit(mq-get-breakpoint-width(#{$min-width}));
+  $max-width-value: strip-unit(mq-get-breakpoint-width(#{$max-width}));
+  $min-font-value: strip-unit($min-font);
+  $max-font-value: strip-unit($max-font);
+
+  @include font-size($min-font);
+
+  @include mq($min-width, $max-width) {
+    font-size: calc(#{$min-font-value}px + #{$max-font-value - $min-font-value} * (100vw - #{$min-width-value}px) / #{$max-width-value - $min-width-value} );
+  }
+
+  @include mq($max-width) {
+    @include font-size($max-font);
+  }
+
+}

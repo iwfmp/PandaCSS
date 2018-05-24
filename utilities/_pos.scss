@@ -21,38 +21,32 @@
    ========================================================================== */
 
 /**
- * Top/Bottom Rules.
- * Possible to add width using width utility (E.g. .u-1/1).
+ * Horizontal Center.
  */
 
-.u-pos--top,
-.u-pos--bottom {
+.u-pos--horizontal {
+  @extend .u-pos;
   transform: translateX(-50%);
   left: 50%;
 }
 
-.u-pos--top { top: 0; }
-.u-pos--bottom { bottom: 0; }
-
 
 /**
- * Let/Right Rules.
+ * Vertical Center.
  */
 
-.u-pos--left,
-.u-pos--right {
+.u-pos--vertical {
+  @extend .u-pos;
   transform: translateY(-50%);
   top: 50%;
 }
 
-.u-pos--left { left: 0; }
-.u-pos--right { right: 0; }
-
 
 /**
- * Absolute Center.
+ * Perfect Center.
  */
 .u-pos--center {
+  @extend .u-pos;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -64,6 +58,7 @@
  */
 
 .u-pos--stretch {
+  @extend .u-pos;
   top: 0;
   right: 0;
   bottom: 0;

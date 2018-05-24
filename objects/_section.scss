@@ -1,0 +1,14 @@
+/* ==========================================================================
+   #SECTION
+   ========================================================================== */
+
+:root {
+  --section-spacing: #{$global-spacing-unit};
+}
+
+.o-section {
+  @extend .u-rhythm;
+
+  padding-bottom: var(--section-spacing);
+  padding-top: var(--section-spacing);
+}

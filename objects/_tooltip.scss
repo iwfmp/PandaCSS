@@ -14,7 +14,7 @@
  *             <svg class="u-img--small" ...></svg>
  *         </span>
  *     </div>
- *     <div class="o-tooltip__message o-tooltip__message--top u-color-secondary">
+ *     <div class="o-tooltip__body o-tooltip__body--top u-color-secondary">
  *         <div class="o-box">
  *             <p>Lorem Ipsum...</p>
  *         </div>
@@ -24,7 +24,7 @@
 
 $tooltip-border-width: 1px !default;
 $tooltip-border-color: currentColor !default;
-$tooltip-message-width: 300px !default;
+$tooltip-body-width: 260px !default;
 $tooltip-triangle-width: 16px !default;
 
 $tooltip-positions: (
@@ -38,7 +38,7 @@ $tooltip-positions: (
 /**
  * Parent container for tooltip.
  *
- * 1. Set position relative so we can position the tooltip message properly.
+ * 1. Set position relative so we can position the tooltip body properly.
  * 2. Capture ONLY the dimensions of the trigger as the parent wrappers'.
  */
 
@@ -51,10 +51,10 @@ $tooltip-positions: (
 /**
  * Tooltip hover state.
  *
- * 1. Show tooltip message upon hovering the trigger.
+ * 1. Show tooltip body upon hovering the trigger.
  */
 
-.o-tooltip__trigger:hover + .o-tooltip__message {
+.o-tooltip__trigger:hover + .o-tooltip__body {
   display: block; /* [1] */
 }
 
@@ -62,33 +62,33 @@ $tooltip-positions: (
 
 
 
-/* Tooltip Message
+/* Tooltip body
    ========================================================================== */
 
 /**
- * Design for tooltips message.
+ * Design for tooltips body.
  *
- * 1. Initially tooltip message is hidden.
+ * 1. Initially tooltip body is hidden.
  * 2. Opinionated. Who wants to see a totally square tooltip? Jeez.
  * 3. Border color is derived from the font color,
  *    inherited from parent(s) or by using the color utility.
  *    If you don't want a border just set its width value to 0.
- * 4. All tooltip messages are absolute. Actual position according to modifiers.
- * 5. Set tooltip message width. Can be overriden w/ JS without styling concerns.
+ * 4. All tooltip bodys are absolute. Actual position according to modifiers.
+ * 5. Set tooltip body width. Can be overriden w/ JS without styling concerns.
  */
 
-.o-tooltip__message {
+.o-tooltip__body {
   border-radius: $global-radius; /* [2] */
   border: $tooltip-border-width solid $tooltip-border-color; /* [3] */
   display: none; /* [1] */
   position: absolute; /* [4] */
-  width: $tooltip-message-width; /* [5] */
+  width: $tooltip-body-width; /* [5] */
 }
 
 
 /**
- * Design for tooltips message triangle.
- * The triangle is a rotated square half hidden behind the message
+ * Design for tooltips body triangle.
+ * The triangle is a rotated square half hidden behind the body
  *
  * 1. Create a square and rotate it 45deg to simulate a triangle. This is instead of
  *    using the border technique to enable border inheritence.
@@ -97,8 +97,9 @@ $tooltip-positions: (
  * 4. Initial value for border width should be 0. Actual values according to modifiers.
  */
 
-.o-tooltip__message::before {
-  @util size(#{$tooltip-triangle-width}); /* [1] */
+.o-tooltip__body::before {
+  width: $tooltip-triangle-width; /* [1] */
+  height: $tooltip-triangle-width; /* [1] */
   background: inherit; /* [2] */
   border: inherit; /* [2] */
   border-width: 0;  /* [4] */
@@ -124,13 +125,13 @@ $tooltip-positions: (
 /**
  * Set tooltip position (top, right, bottom, left).
  *
- * 1. Position tooltip message on the primary axis (top, right, bottom, left)
- * 2. Position tooltip message on the secondary axis (top/bottom <-> left/right)
- * 3. Perfect center the tooltip message according to secondary axis.
- *    Regardless of tooltip message width, which can (and possibly should) be declared via JS.
+ * 1. Position tooltip body on the primary axis (top, right, bottom, left)
+ * 2. Position tooltip body on the secondary axis (top/bottom <-> left/right)
+ * 3. Perfect center the tooltip body according to secondary axis.
+ *    Regardless of tooltip body width, which can (and possibly should) be declared via JS.
  */
 
-  .o-tooltip__message--#{$pos-name} {
+  .o-tooltip--#{$pos-name} .o-tooltip__body {
     #{$primary-axis}: calc(100% + #{$tooltip-triangle-width}); /* [1] */
     #{$secondary-axis}: 50%; /* [2] */
 
@@ -145,14 +146,14 @@ $tooltip-positions: (
 /**
  * Set tooltip on primary axis position ($tooltip-positions).
  *
- * 1. Move all tooltip message tip in proper position.
+ * 1. Move all tooltip body tip in proper position.
  * 2. Fix odd location when rotating.
  * 3. Perfect center the tooltip tip. Since the size is declared we can use negative margin,
  *    as not to override the rotate transform declaration.
  * 4. Set the appropriate border styling for the tip.
  */
 
-  .o-tooltip__message--#{$pos-name}::before {
+  .o-tooltip--#{$pos-name} .o-tooltip__body::before {
     #{$primary-axis}: -#{$tooltip-triangle-width / 2}; /* [1] */
     margin-#{$primary-axis}: -1px; /* [2] */
     #{$secondary-axis}: 50%; /* [3] */

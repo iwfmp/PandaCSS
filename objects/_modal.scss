@@ -1,0 +1,53 @@
+/* ==========================================================================
+   #MODAL
+   ========================================================================== */
+
+:root {
+  --modal-max-width: 500px;
+}
+
+/**
+ * Both modal overlay and modal are fixed and centered.
+ * Overlay stretches the whole screen while the modal is placed in the middle.
+ */
+
+.o-modal {
+  @extend .u-pos--stretch;
+  position: fixed;
+  background: rgba($color-black, .75);
+  z-index: z(overlay);
+}
+
+
+/**
+ * Modal Dialog.
+ *
+ * 1. Hide the dialog until shown w/ JS.
+ */
+
+.o-modal__dialog {
+  display: none; /* [1] */
+  width: 100%;
+  max-width: var(--modal-max-width);
+}
+
+
+/**
+ * Modal Body.
+ * Position w/ utilities (e.g. .u-pos, .u-flex etc.)
+ */
+
+.o-modal__body {
+  position: relative;
+}
+
+
+/**
+ * Modal close.
+ */
+
+.o-modal__close {
+  position: absolute;
+  right: -#{$global-spacing-unit-small};
+  top: -#{$global-spacing-unit-small};
+}

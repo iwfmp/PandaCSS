@@ -34,11 +34,6 @@ $global-colors: (
     color: color-invert($value);
   }
 
-  svg.u-color-#{$name} {
-    background-color: transparent;
-    fill: $value;
-  }
-
 }
 
 
@@ -62,7 +57,7 @@ $global-colors-text: (
 @each $name, $value in $global-colors-text {
 
   .u-color-text-#{$name} {
-    color: $value !important;
+    color: $value;
   }
 
 }

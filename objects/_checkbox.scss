@@ -1,0 +1,89 @@
+/* ==========================================================================
+   #CHECKBOX
+   ========================================================================== */
+
+:root {
+  --checkbox-wrapper-border: currentColor;
+  --checkbox-wrapper-bg: #{$color-white};
+}
+
+
+.o-checkbox {
+  display: inline-block;
+}
+
+
+
+
+
+/* #Checkbox Check
+   ========================================================================== */
+
+/**
+ * Check box styling.
+ *
+ * 1. Force vertical alignemtn, e.g. override font awesome.
+ * 2. Give some space between wrapper and icon.
+ * 3. If using svg, hide initially.
+ */
+
+.o-checkbox__check {
+  @extend .u-flex--center; /* [1] */
+  background: var(--checkbox-wrapper-bg);
+  border: 2px solid var(--checkbox-wrapper-border);
+  flex-shrink: 0;
+  margin-left: $global-spacing-unit-small;
+
+  svg { fill: transparent; } /* [3] */
+}
+
+
+
+
+
+/* #Checkbox Label
+   ========================================================================== */
+
+/**
+ * 1. Align to top if label text is multi-line.
+ *    Note the checkbox should be then have same line-heigt as text!
+ */
+
+.o-checkbox__label {
+  @extend .u-flex--center;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+
+
+
+
+/* #Checkbox Input
+   ========================================================================== */
+
+/**
+ * Hide the input. Styling is on label.
+ */
+
+.o-checkbox__input { @extend .u-hide-visually; }
+
+
+
+
+
+/* #Checkbox Trigger
+   ========================================================================== */
+
+/**
+ * When the input is checked, run animation and change colour.
+ *
+ * 1. If using o-shape--check, take the respective variable.
+ *    Otherwise, use currentColor (default value).
+ * 2. If using svg, show.
+ */
+
+.o-checkbox__input:checked + .o-checkbox__label > .o-checkbox__check {
+  svg { fill: currentColor; }
+  &::after { border-color: var(--check-color, currentColor); } /* [1] */
+}

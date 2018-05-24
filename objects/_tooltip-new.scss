@@ -1,0 +1,182 @@
+ /* ==========================================================================
+   #TOOLTIPS
+   ========================================================================== */
+
+:root {
+  --tooltip-body-color: #{$color-white};
+  --tooltip-body-width: 300px;
+  --tooltip-border-color: currentColor;
+  --tooltip-border-width: 1px;
+  --tooltip-radius: $global-radius;
+  --tooltip-triangle-width: 16px;
+}
+
+/**
+ * Generic tooltip object.
+ * Styling should be used mainly with utilities and objects (see example).
+ * Width should be set with javascript although default value is provided.
+ *
+ * Example HTML:
+ * <div class="o-tooltip o-tooltip--top">
+ *     <div class="o-tooltip__trigger">
+ *         <span class="o-icon u-img u-color-primary">
+ *             <svg ...></svg>
+ *         </span>
+ *     </div>
+ *     <div class="o-tooltip__body u-color-secondary">
+ *         <div class="o-box">
+ *             <p>Lorem Ipsum...</p>
+ *         </div>
+ *     </div>
+ * </div>
+ */
+
+$tooltip-axis-main: (
+  "top":     top,
+  "right":   right,
+  "bottom":  bottom,
+  "left":    left
+) !default;
+
+$tooltip-axis-cross: (
+  "start":  25%,
+  "center": 50%,
+  "end":    75%
+) !default;
+
+
+/**
+ * Parent container for tooltip.
+ *
+ * 1. Set position relative so we can position the tooltip body & triangle.
+ * 2. Capture ONLY the dimensions of the trigger as the parent wrappers'.
+ */
+
+.o-tooltip {
+  position: relative; /* [1] */
+  display: inline-block; /* [2] */
+}
+
+
+
+
+
+/* Tooltip Tip
+   ========================================================================== */
+
+/**
+ * The tip of the tooltip is located on the trigger element.
+ * I found it easier to control, since its location is ALWAYS at its cetner,
+ * unlike the tooltips' body position which I want to vary.
+ * Then all is needed is to move the body around, according to...whatever.
+ *
+ * The tip is a rotated square half hidden behind the body,
+ * and not the classic border trick.
+ * Found it easier to apply box-shadow to and allow border inheritence,
+ * for example, that would otherwise be impossible.
+ *
+ * 1. Create a square and rotate it 45deg to simulate a triangle.
+ * 2. Inherit border and background definitions from parent.
+ * 3. All tooltip triangles are absolute. Actual position according to modifiers.
+ * 4. Initial value for border width should be 0. Actual values according to modifiers.
+ */
+
+.o-tooltip__trigger::before {
+  background: var(--tooltip-body-color); /* [2] */
+  border-width: 0;  /* [4] */
+  border: var(--tooltip-border-width) solid var(--tooltip-border-color); /* [2] */
+  content: "";
+  height: var(--tooltip-triangle-width); /* [1] */
+  position: absolute; /* [3] */
+  transform: rotate(45deg); /* [1] */
+  width: var(--tooltip-triangle-width); /* [1] */
+}
+
+
+/**
+ * Tooltip Tip Positions
+ *
+ * 1. Move all tooltip body tip in proper position.
+ * 2. Fix odd location when rotating.
+ * 3. Perfect center the tooltip tip. Since the size is declared we can use negative margin,
+ *    as not to override the rotate transform declaration.
+ * 4. Set the appropriate border styling for the tip.
+ */
+
+@each $pos-name, $pos-value in $tooltip-axis-main {
+
+  .o-tooltip--#{$pos-name} .o-tooltip__trigger::before {
+    #{$pos-name}: calc(var(--tooltip-triangle-width) * -1.5);
+
+    @if $pos-name == "left" or $pos-name == "right" {
+      top: calc(50% - calc(var(--tooltip-triangle-width) / 2));
+    }
+    @else {
+      left: calc(50% - calc(var(--tooltip-triangle-width) / 2));
+    }
+  }
+
+}
+
+
+
+
+
+/* Tooltip body
+   ========================================================================== */
+
+/**
+ * Design for tooltips body.
+ *
+ * 1. Initially tooltip body is hidden.
+ * 2. Opinionated. Who wants to see a totally square tooltip? Jeez.
+ * 3. Border color is derived from the font color,
+ *    inherited from parent(s) or by using the color utility.
+ *    If you don't want a border just set its width value to 0.
+ * 4. All tooltip bodys are absolute. Actual position according to modifiers.
+ * 5. Set tooltip body width. Can be overriden w/ JS without styling concerns.
+ */
+
+.o-tooltip__body {
+  border-radius: var(--tooltip-radius); /* [2] */
+  border: var(--tooltip-border-width) solid var(--tooltip-border-color); /* [3] */
+  // display: none; /* [1] */
+  position: absolute; /* [4] */
+  width: var(--tooltip-body-width); /* [5] */
+}
+
+
+/**
+ * Tooltip Body Positions
+ *
+ * 1. Position tooltip body on the primary axis (top, right, bottom, left)
+ * 2. Position tooltip body on the secondary axis (top/bottom <-> left/right)
+ * 3. Perfect center the tooltip body according to secondary axis.
+ *    Regardless of tooltip body width, which can (and possibly should) be declared via JS.
+ */
+
+@each $pos-name, $pos-value in $tooltip-axis-main {
+
+  .o-tooltip--#{$pos-name} .o-tooltip__body {
+    @if $pos-name == "left" or $pos-name == "right" { left: calc(50% + calc(var(--tooltip-triangle-width) * 2) - 2px); }
+    @else { top: calc(50% + calc(var(--tooltip-triangle-width) * 2) - 2px); }
+  }
+
+}
+
+
+
+
+
+/* Tooltip Triggers
+   ========================================================================== */
+
+/**
+ * Tooltip hover state.
+ *
+ * 1. Show tooltip body upon hovering the trigger.
+ */
+
+.o-tooltip__trigger:hover + .o-tooltip__body {
+  display: block; /* [1] */
+}

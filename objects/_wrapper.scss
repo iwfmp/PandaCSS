@@ -2,48 +2,42 @@
    #WRAPPERS
    ========================================================================== */
 
+:root {
+  --wrapper-spacing: #{$global-spacing-unit};
+  --wrapper-width: #{$global-container-width};
+}
+
+
 /**
  * Page-level constraining and wrapping elements.
  */
 
-$wrapper-width: 1200px !default;
-
-/* stylelint-disable */
-@if (type-of($wrapper-width) != number) {
-  @error "`#{$wrapper-width}` needs to be a number."
-}
-/* stylelint-enable */
-
 .o-wrapper {
-  margin-right: auto;
+  @extend .u-rhythm;
+
+  padding-right: var(--wrapper-spacing);
+  padding-left: var(--wrapper-spacing);
   margin-left:  auto;
-  max-width: $wrapper-width;
+  margin-right: auto;
+  max-width: var(--wrapper-width);
 }
 
 
 
 
 
-/* Size variants.
+/* ==========================================================================
+   #SIZE VARIANTS
    ========================================================================== */
 
-@each $name, $value in $global-spacing-sizes {
-
-  .o-wrapper#{$name} {
-    padding-right: #{$value};
-    padding-left:  #{$value};
-  }
-
+.o-wrapper--flush {
+  padding-left: 0;
+  padding-right: 0;
 }
 
-
-
-
-
-/* Style variants.
-   ========================================================================== */
 
 .o-wrapper--fluid {
   max-width: none;
   width: 100%;
 }
+

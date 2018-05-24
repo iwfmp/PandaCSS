@@ -8,28 +8,11 @@
  */
 
 .o-headline {
+  @include responsive-spacing(margin-bottom);
+  text-align: center;
 
   > :first-child {
-    margin-bottom: 0;
-  }
-
-  > * {
-    white-space: nowrap;
-  }
-
-}
-
-
-
-
-
-/* Size variants
-   ========================================================================== */
-
-@each $name, $value in $global-spacing-sizes {
-
-  .o-headline#{$name} {
-    margin-bottom: $value;
+    margin-bottom: $global-spacing-unit-small;
   }
 
 }

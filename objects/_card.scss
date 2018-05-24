@@ -1,0 +1,33 @@
+/* ==========================================================================
+   #CARD
+   ========================================================================== */
+
+/**
+ * Elementary card cosmetic styling.
+ *
+ * 1. Margin collapse works for us here, since the inner childs might also
+ *    have margins. This will default to the biggest of all, others will
+ *    be confined to it.
+ * 2. Have the last element accept margin dimensions in the overall calc.
+ */
+
+.o-card {
+  @extend .u-rhythm;
+  background-color: $color-white;
+  border-radius: $global-radius;
+  box-shadow: $global-shadow;
+  text-align: center;
+  padding: var(--box-spacing) 0;
+}
+
+
+/**
+ * Inside elements should give some space.
+ * Note that in flex mode, there is no margin collapse!
+ */
+
+.o-card__header,
+.o-card__body,
+.o-card__footer {
+  padding: 0 var(--box-spacing);
+}

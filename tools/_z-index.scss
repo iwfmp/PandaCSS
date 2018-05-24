@@ -4,12 +4,17 @@
 
 // Mixin to ease the use of z-index.
 // https://css-tricks.com/handling-z-index/
+// https://philipwalton.com/articles/what-no-one-told-you-about-z-index/
 
 $z-layers: (
   under: -1,
   default: 1,
-  dropdown: 2000,
+  dropdown: 1000,
+  dropdown-btn: 1001,
+  tooltip: 2000,
   drawer: 3000,
+  nav: 3500,
+  nav-btn: 3501,
   overlay: 4000,
   modal: 4001
 ) !default;

@@ -3,17 +3,14 @@
    ========================================================================== */
 
 /**
- * Adding some vertical rhythm for elements it's not obvious for.
+ * Extend generic/_rhythm.
+ * Add vertical rhythm for any element it's not obvious for.
  */
 
-@each $name, $value in $global-spacing-sizes {
+.u-rhythm {
 
-  .u-rhythm#{$name} {
-
-    > *:not(:last-child) {
-      margin-bottom: $value;
-    }
-
+  > *:not(:last-child) {
+    margin-bottom: var(--rhythm-spacing);
   }
 
 }

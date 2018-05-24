@@ -5,14 +5,11 @@
 /**
  * Modern implementation of media/media object
  * http://www.stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code
- *
- * 1. Default to aligning content to their middles.
  */
 
 .o-media {
   display: flex;
   flex: 1;
-  align-items: center; /* [1] */
 }
 
 
@@ -25,7 +22,7 @@
  * 1. Force `.media__img` to take up as little space as possible.
  */
 
-.o-media__img {
+.o-media__side {
   flex: 0 0 auto; /* [1] */
   margin-bottom: 0;
 
@@ -111,8 +108,8 @@
  * Defaults to middle.
  */
 
-.o-media--top {
-  align-items: flex-start;
+.o-media--center {
+  align-items: center;
 }
 
 .o-media--bottom {

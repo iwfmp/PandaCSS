@@ -1,0 +1,41 @@
+// ==========================================================================
+// #FONT FACE
+// ==========================================================================
+
+// https://coderwall.com/p/i8ovqg/absurdly-abstract-font-face-mixin
+
+// $font-faces:
+// 'Nexa' (
+//     400 "nexa/nexa_regular-webfont",
+//     600 "nexa/nexa_bold-webfont",
+//     700 "nexa/nexa_black-webfont"
+// ),
+// 'TinFish' (
+//     600 "font/tin-fish",
+//     300 "font/tin-fish",
+//     400 "font/tin-fish"
+// ) !default;
+
+$font-faces: false !default;
+
+@mixin font-faces() {
+
+    @each $face in $font-faces {
+        $face-name: quote( #{nth($face, 1)} );
+        $font-weights: nth($face, 2);
+
+        @each $weight in $font-weights {
+            @font-face {
+              font-family: $face-name;
+              src: url( nth($weight, 2) + '.eot' );
+              src: url( nth($weight, 2) + '.eot#iefix') format('embedded-opentype'),
+               url( nth($weight, 2) + '.woff') format('woff'),
+               url( nth($weight, 2) + '.ttf') format('truetype'),
+               url( nth($weight, 2) + '.svg#rosche') format('svg');
+              font-weight: nth($weight, 1);
+              font-style: normal;
+            }
+        }
+    }
+
+}

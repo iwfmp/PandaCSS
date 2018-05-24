@@ -2,6 +2,13 @@
    #BUTTONS
    ========================================================================== */
 
+:root {
+  --btn-spacing: #{$global-spacing-unit};
+  --btn-border-radius: #{$global-radius};
+  --btn-transition: #{$global-transition};
+  --btn-ghost-border-width: 1px;
+}
+
 /**
  * 1. Allow us to style box model properties.
  * 2. Line different sized buttons up a little nicer.
@@ -11,20 +18,19 @@
  * 5. Force all button-styled elements to appear clickable.
  */
 
-$btn-border-radius: $global-radius !default;
-$btn-min-width: 300px !default;
-$btn-transition: $global-transition !default;
+
 
 .o-btn {
-  border-radius: $btn-border-radius;
+  border-radius: var(--btn-border-radius);
   cursor: pointer; /* [5] */
   display: inline-block; /* [1] */
   font: inherit; /* [3] */
   margin: 0; /* [4] */
-  min-width: $btn-min-width;
   text-align: center; /* [4] */
-  transition: $btn-transition;
+  transition: var(--btn-transition);
   vertical-align: middle; /* [2] */
+  padding: calc(var(--btn-spacing) / 2) var(--btn-spacing);
+
 
   &:hover {
     filter: brightness(90%);
@@ -33,21 +39,6 @@ $btn-transition: $global-transition !default;
   &.is-active {
     filter: brightness(80%);
   }
-}
-
-
-
-
-
-/* Size variants
-   ========================================================================== */
-
-@each $name, $value in $global-spacing-sizes {
-
-  .o-btn#{$name} {
-    padding: #{$value / 2} #{$value};
-  }
-
 }
 
 
@@ -63,10 +54,10 @@ $btn-transition: $global-transition !default;
  * 1. Inherit text color using the magical 'currentColor'.
  */
 
-$btn-ghost-border-width: 1px !default;
+
 
 .o-btn--ghost {
-  border-width: $btn-ghost-border-width;
+  border-width: var(--btn-ghost-border-width);
   border-color: currentColor; /* [1] */
   border-style: solid;
 

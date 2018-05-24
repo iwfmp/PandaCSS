@@ -12,7 +12,8 @@
 .o-pack {
   align-items: center; /* [2] */
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%; /* [1] */
 }
 
@@ -28,6 +29,7 @@
 .o-pack__item {
   flex: 0 0 auto; /* [1] */
   margin-bottom: 0; /* [3] */
+  max-width: 100%;
 }
 
 
@@ -94,8 +96,11 @@
 
 .o-pack--wrap {
   flex-wrap: wrap; /* [1] */
+}
 
-  .o-pack__item:empty {
-    height: 0; /* [2] */
-  }
+.o-pack__item--empty {
+  height: 0; /* [2] */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }

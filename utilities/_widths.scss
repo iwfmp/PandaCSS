@@ -42,7 +42,7 @@
 //   .u-3/4
 //   .u-2/3
 
-$widths-fractions: 1 2 3 4 5 !default;
+$widths-fractions: 1 2 3 12 !default;
 
 
 
@@ -97,7 +97,9 @@ $widths-breakpoint-separator: \@ !default;
 
       // Build a class in the format `.u-3/4[@<breakpoint>]`.
       .u-#{$numerator}#{$widths-delimiter}#{$denominator}#{$breakpoint} {
-        width: ($numerator / $denominator) * 100% !important;
+        width: ($numerator / $denominator) * 100%;
+
+        @include mq(mobile, tablet) { width: 100%; }
       }
 
       @if ($widths-offsets == true) {

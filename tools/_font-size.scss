@@ -22,7 +22,6 @@
   }
 
   // We provide a `px` fallback for old IEs not supporting `rem` values.
-  font-size: $font-size $important;
   font-size: ($font-size / $global-font-size) * 1rem $important;
 
   @if ($line-height == 'auto') {

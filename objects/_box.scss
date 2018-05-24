@@ -3,31 +3,54 @@
    ========================================================================== */
 
 /**
- * The box object simply boxes off content. Extend with cosmetic styles in the
- * Components layer.
+ * The box object simply boxes off content.
+ * Extend with cosmetic styles in the componenets layer.
  *
- * 1. So we can apply the `.o-box` class to naturally-inline elements.
+ * 1. Set relative for media, if need be.
+ * 2. Create new stacking context for media's negative z-index.
  */
 
 .o-box {
-  display: block; /* [1] */
-
-  > :last-child {
-    margin-bottom: 0;
-  }
+  padding: var(--box-spacing);
+  position: relative; /* [1] */
+  text-align: center;
+  z-index: z(default); /* [2] */
 }
 
 
+/**
+ * Box media is presented as an underlying overlay.
+ * Usually with backdrop.
+ *
+ * 1. Make clear edges of the overlays.
+ * 2. Show all the elements above the media, if need be.
+ */
+
+.o-box__media {
+  @extend .u-pos--stretch;
+  overflow: hidden; /* [1] */
+  z-index: z(under); /* [2] */
+}
 
 
+/**
+ * Inside elements should give some space.
+ * Note that in flex mode, there is no margin collapse!
+ */
 
-/* Size variants
-   ========================================================================== */
+.o-box__header,
+.o-box__body,
+.o-box__footer {
+  margin: var(--box-spacing);
+}
 
-@each $name, $value in $global-spacing-sizes {
 
-  .o-box#{$name} {
-    padding: #{$value};
-  }
+/**
+ * A box without any design.
+ */
 
+.o-box--styled {
+  background-color: $color-white;
+  border-radius: $global-radius;
+  box-shadow: $global-shadow;
 }

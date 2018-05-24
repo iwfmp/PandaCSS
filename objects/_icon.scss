@@ -1,0 +1,41 @@
+/* ==========================================================================
+   #ICON
+   ========================================================================== */
+
+:root {
+  --icon-border-width: 2px;
+}
+
+/**
+ * A basic container for icons.
+ * Gets the width/height from utils/_images.scss via class,
+ * and the icon itself inherits both the color and dimensions.
+ *
+ * 1. Make the svg/img align to the box.
+ * 2. Have the box at least inline-block to get dimensions.
+ */
+
+.o-icon {
+  display: inline-block; /* [2] */
+  vertical-align: middle;
+  text-align: center;
+
+  img, svg {
+    height: 100%;
+    vertical-align: top; /* [1] */
+    max-width: 100%;
+  }
+}
+
+
+/**
+ * Ghost Icons
+ */
+
+.o-icon--ghost {
+  @extend .o-icon;
+  border: var(--icon-border-width) solid currentColor;
+  border-radius: 50%;
+
+  img, svg { padding: 4px; }
+}
