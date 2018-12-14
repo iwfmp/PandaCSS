@@ -9,17 +9,30 @@
  */
 
 $image-sizes: (
-  "--iconer":  22px,
-  "--icon":    30px,
-  "--avatar":  60px,
-  "--thumb":   120px
+  "valid":   16px,
+  "icon":    30px,
+  "avatar":  50px,
+  "thumb":   120px,
+  "logo":    160px
 ) !default;
+
+.u-img {
+  height: #{spacing()};
+  width: #{spacing()};
+}
+
+
+
+
+
+/* #SIZE VARIANTS
+   -------------------------------------------------------------------------- */
 
 $merged-image-sizes: map-merge($image-sizes, $global-spacing-sizes);
 
-@each $namee, $value in $merged-image-sizes {
+@each $name, $value in $image-sizes {
 
-  .u-img#{$namee} {
+  .u-img--#{$name} {
     height: $value;
     width: $value;
   }
@@ -27,9 +40,11 @@ $merged-image-sizes: map-merge($image-sizes, $global-spacing-sizes);
 }
 
 
-/**
- * Round images
- */
+
+
+
+/* #STYLE VARIANTS
+   -------------------------------------------------------------------------- */
 
 .u-img--round {
   border-radius: 50%;

@@ -39,7 +39,7 @@
 
 @each $name, $value in $global-spacing-sizes {
 
-  .o-table#{$name} {
+  .o-table--#{$name} {
 
     th,
     td {

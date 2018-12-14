@@ -74,7 +74,7 @@ $use-markup-fix: false !default;
   margin:  0; /* [2] */
   padding: 0; /* [2] */
   list-style: none; /* [1] */
-  margin-left: -$global-spacing-unit; /* [3] */
+  margin-left: -#{spacing()}; /* [3] */
 
   @if ($use-markup-fix == false) {
     font-size: 0;
@@ -100,7 +100,7 @@ $use-markup-fix: false !default;
     display: inline-block; /* [2] */
     vertical-align: top; /* [3] */
     width: 100%; /* [4] */
-    padding-left: $global-spacing-unit; /* [5] */
+    padding-left: #{spacing()}; /* [5] */
 
     @if ($use-markup-fix == false) {
       font-size: $global-font-size; /* [6] */
@@ -118,7 +118,7 @@ $use-markup-fix: false !default;
 
 @each $name, $value in $global-spacing-sizes {
 
-  .o-layout#{$name} {
+  .o-layout--#{$name} {
     margin-left: -$value;
 
     > .o-layout__item {

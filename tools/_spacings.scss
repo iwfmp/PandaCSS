@@ -1,0 +1,93 @@
+// ==========================================================================
+// #SPACING
+// ==========================================================================
+
+@import 'mq';
+@import 'functions';
+
+// Spacing values are determined based on your project’s global line height (i.e
+// your baseline grid). It is not recommended that you modify these following
+// variables (it can break your vertical rhythm), but if you need to, you can.
+
+$global-spacing-fractions: (
+  "flush":   0.00,
+  "tiny":    0.25,
+  "small":   0.50,
+  "":        1.00,
+  "large":   2.00,
+  "larger":  3.00,
+  "huge":    4.00,
+  "huger":   5.00
+) !default;
+
+
+
+
+
+// #SIZE VARIANTS
+// --------------------------------------------------------------------------
+
+$global-spacing-unit:  $global-line-height !default;
+$global-spacing-sizes: ();
+
+@each $name, $value in $global-spacing-fractions {
+  $temp-map: ( "#{$name}": #{$global-spacing-unit * $value} );
+  $global-spacing-sizes: map-merge($global-spacing-sizes, $temp-map);
+}
+
+@function spacing($spacing-name: "") {
+  @return map-get($global-spacing-sizes, $spacing-name);
+}
+
+
+
+
+
+// ==========================================================================
+// #RESPONSIVE SPACING
+// ==========================================================================
+
+// https://css-tricks.com/molten-leading-css/
+
+@mixin responsive-spacing (
+  $selector,
+  $min-spacing: $global-spacing-unit / 2,
+  $max-spacing: $global-spacing-unit,
+  $min-width: tablet,
+  $max-width: desktop
+  ) {
+
+  $min-width-value: strip-unit(mq-get-breakpoint-width(#{$min-width}));
+  $max-width-value: strip-unit(mq-get-breakpoint-width(#{$max-width}));
+  $min-spacing-value: strip-unit($min-spacing);
+  $max-spacing-value: strip-unit($max-spacing);
+
+  #{$selector}: #{$min-spacing-value}px;
+
+  @include mq($min-width, $max-width) {
+    #{$selector}: calc(#{$min-spacing-value}px + #{$max-spacing-value - $min-spacing-value} * (100vw - #{$min-width-value}px) / #{$max-width-value - $min-width-value} );
+  }
+
+  @include mq($max-width) {
+    #{$selector}: #{$max-spacing-value}px;
+  }
+
+}
+
+
+
+
+
+// #SIZE VARIANTS
+// --------------------------------------------------------------------------
+
+$global-spacing-sizes-res: ();
+
+@each $name, $value in $global-spacing-fractions {
+  $temp-map: ( "#{$name}": calc(var(--rhythm-spacing) * #{$value}) );
+  $global-spacing-sizes-res: map-merge($global-spacing-sizes-res, $temp-map);
+}
+
+@function spacing-res($spacing-name: "") {
+  @return map-get($global-spacing-sizes-res, $spacing-name);
+}

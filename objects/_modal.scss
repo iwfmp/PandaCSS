@@ -48,6 +48,6 @@
 
 .o-modal__close {
   position: absolute;
-  right: -#{$global-spacing-unit-small};
-  top: -#{$global-spacing-unit-small};
+  right: -#{spacing("small")};
+  top: -#{spacing("small")};
 }

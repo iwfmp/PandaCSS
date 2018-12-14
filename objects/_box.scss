@@ -3,8 +3,9 @@
    ========================================================================== */
 
 /**
- * The box object simply boxes off content.
- * Extend with cosmetic styles in the componenets layer.
+ * Elementary box cosmetic styling.
+ * In this website there are 2 main 'boxes' - regular and clean.
+ * Each gets his own basic configuration.
  *
  * 1. Set relative for media, if need be.
  * 2. Create new stacking context for media's negative z-index.
@@ -12,6 +13,9 @@
 
 .o-box {
   padding: var(--box-spacing);
+  background-color: $color-white;
+  border-radius: $global-radius;
+  box-shadow: $global-shadow;
   position: relative; /* [1] */
   text-align: center;
   z-index: z(default); /* [2] */
@@ -49,8 +53,8 @@
  * A box without any design.
  */
 
-.o-box--styled {
-  background-color: $color-white;
-  border-radius: $global-radius;
-  box-shadow: $global-shadow;
+.o-box--clean {
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
 }

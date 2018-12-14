@@ -32,7 +32,7 @@
   background: var(--checkbox-wrapper-bg);
   border: 2px solid var(--checkbox-wrapper-border);
   flex-shrink: 0;
-  margin-left: $global-spacing-unit-small;
+  margin-right: #{spacing(small)};
 
   svg { fill: transparent; } /* [3] */
 }

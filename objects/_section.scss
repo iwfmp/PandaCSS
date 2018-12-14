@@ -3,12 +3,23 @@
    ========================================================================== */
 
 :root {
-  --section-spacing: #{$global-spacing-unit};
+  --section-spacing: #{spacing-res("huge")};
 }
 
 .o-section {
-  @extend .u-rhythm;
+  @extend .u-rhythm--large;
 
   padding-bottom: var(--section-spacing);
   padding-top: var(--section-spacing);
 }
+
+
+
+
+
+/* ==========================================================================
+   #STYLE VARIANTS
+   ========================================================================== */
+
+.o-section--callout { overflow: hidden; }
+.o-section--footer { text-align: center; }

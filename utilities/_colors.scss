@@ -9,24 +9,6 @@
  * SVGs accept fill color instead of background.
  */
 
-$global-colors: (
-  "white":      $color-white,
-  "black":      $color-black,
-  "light":      $color-gray-concrete,
-  "dark":       $color-blue-space,
-
-  "primary":    $color-yellow-lace,
-  "secondary":  $color-green-olivine,
-
-  "brand":      $color-blue-moody,
-  "cta":        $color-green-atlantis,
-  "info":       $color-blue-dodger,
-  "success":    $color-green-emerald,
-  "danger":     $color-orange-grenadier,
-  "warning":    $color-yellow-sun,
-  "error":      $color-red-guardsman
-) !default;
-
 @each $name, $value in $global-colors {
 
   .u-color-#{$name} {
@@ -43,16 +25,6 @@ $global-colors: (
 /**
  * Set just text colors, when the inverted color isn"t sufficient.
  */
-
-$global-colors-text: (
-  "white":     $color-white,
-  "black":     $color-black,
-  "light":     $color-gray-gallery,
-  "dark":      $color-gray-boulder,
-
-  "primary":   $color-gray-mineshaft,
-  "secondary": $color-gray-hit
-) !default;
 
 @each $name, $value in $global-colors-text {
 

@@ -101,9 +101,9 @@
    ========================================================================== */
 
 :root {
-  --check-color: currentColor;
-  --check-width: 4px;
-  --check-wrap-size: 20px;
+  --check-color: #{$color-green-emerald};
+  --check-width: 6px;
+  --check-wrap-size: 50px;
 }
 
 

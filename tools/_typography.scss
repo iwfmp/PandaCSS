@@ -1,0 +1,117 @@
+// ==========================================================================
+// #TYPOGRAPHY
+// ==========================================================================
+
+// Typography values set the default for text needs. Mostly font families,
+// font sizes and line height. Headings sizes are set in headings utility,
+// and text color are in color utility.
+
+$global-font-family:       "Lato", sans-serif !default;
+$global-font-family-bold:  "Montserrat", sans-serif !default;
+$global-font-size:         16px !default;
+$global-line-height:       24px !default;
+
+$global-weight-light:      300 !default;
+$global-weight-semibold:   500 !default;
+
+$global-font-sizes: (
+  "h1":  58px,
+  "h2":  40px,
+  "h3":  28px,
+  "h4":  20px,
+  "h5":  16px
+) !default;
+
+
+
+
+
+// ==========================================================================
+// #FONT FACE
+// ==========================================================================
+
+// https://coderwall.com/p/i8ovqg/absurdly-abstract-font-face-mixin
+
+// $font-faces:
+// 'Nexa' (
+//     400 "nexa/nexa_regular-webfont",
+//     600 "nexa/nexa_bold-webfont",
+//     700 "nexa/nexa_black-webfont"
+// ),
+// 'TinFish' (
+//     600 "font/tin-fish",
+//     300 "font/tin-fish",
+//     400 "font/tin-fish"
+// ) !default;
+
+$font-faces: false !default;
+
+@mixin font-faces() {
+
+    @each $face in $font-faces {
+        $face-name: quote( #{nth($face, 1)} );
+        $font-weights: nth($face, 2);
+
+        @each $weight in $font-weights {
+            @font-face {
+              font-family: $face-name;
+              src: url( nth($weight, 2) + '.eot' );
+              src: url( nth($weight, 2) + '.eot#iefix') format('embedded-opentype'),
+               url( nth($weight, 2) + '.woff') format('woff'),
+               url( nth($weight, 2) + '.ttf') format('truetype'),
+               url( nth($weight, 2) + '.svg#rosche') format('svg');
+              font-weight: nth($weight, 1);
+              font-style: normal;
+            }
+        }
+    }
+
+}
+
+
+
+
+
+// ========================================================================
+// #FONT-SIZE
+// ========================================================================
+
+// Generate a font-size and baseline-compatible line-height.
+@mixin font-size($font-size, $line-height: auto, $important: false) {
+
+  @if (type-of($font-size) == number) {
+    @if (unit($font-size) != "px") {
+      @error "`#{$font-size}` needs to be a pixel value.";
+    }
+  } @else {
+    @error "`#{$font-size}` needs to be a number.";
+  }
+
+  @if ($important == true) {
+    $important: !important;
+  } @elseif ($important == false) {
+    $important: null;
+  } @else {
+    @error "`#{$important}` needs to be `true` or `false`."
+  }
+
+  // We provide a `px` fallback for old IEs not supporting `rem` values.
+  font-size: ($font-size / $global-font-size) * 1rem $important;
+
+  @if ($line-height == 'auto') {
+    line-height: ceil($font-size / $global-line-height) * ($global-line-height / $font-size) $important;
+  }
+
+  @else {
+
+    @if (type-of($line-height) == number or $line-height == 'inherit' or $line-height == 'normal') {
+      line-height: $line-height $important;
+    }
+
+    @elseif ($line-height != 'none' and $line-height != false) {
+      @error "D’oh! `#{$line-height}` is not a valid value for `$line-height`."
+    }
+
+  }
+
+}

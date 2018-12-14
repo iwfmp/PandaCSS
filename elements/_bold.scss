@@ -1,0 +1,16 @@
+/* ==========================================================================
+   #BOLD
+   ========================================================================== */
+
+/**
+ * Declare the right bold, in case it's a different type of font.
+ *
+ * 1. Smaller space between letters looks a bit nicer.
+ */
+
+b {
+  @if variable-exists(global-font-family-head) {
+    font-family: $global-font-family-head;
+    letter-spacing: -.05rem; /* [1] */
+  }
+}

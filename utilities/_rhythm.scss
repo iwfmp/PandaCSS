@@ -3,6 +3,16 @@
    ========================================================================== */
 
 /**
+ * Utility classes to put specific spacing values onto elements. The below loop
+ * will generate us a suite of classes like:
+ */
+
+:root {
+  @include responsive-spacing(--rhythm-spacing, $global-spacing-unit / 2, $global-spacing-unit);
+}
+
+
+/**
  * Extend generic/_rhythm.
  * Add vertical rhythm for any element it's not obvious for.
  */
@@ -13,4 +23,35 @@
     margin-bottom: var(--rhythm-spacing);
   }
 
+}
+
+
+/**
+ * Horizontal rhythm
+ */
+
+.u-rhythm-h {
+
+  > *:not(:last-child) {
+    margin-right: calc(var(--rhythm-spacing) / 2);
+  }
+
+}
+
+
+
+
+
+/* ==========================================================================
+   #SIZE VARIANTS
+   ========================================================================== */
+
+@each $name, $value in $global-spacing-sizes-res {
+  .u-rhythm--#{$name} {
+
+    > *:not(:last-child) {
+      margin-bottom: #{$value};
+    }
+
+  }
 }

@@ -57,7 +57,7 @@
 
 @each $name, $value in $global-spacing-sizes {
 
-  .o-media#{$name} {
+  .o-media--#{$name} {
 
     > .o-media__img {
       margin-right: $value;

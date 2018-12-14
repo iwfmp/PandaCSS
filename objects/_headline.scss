@@ -8,11 +8,11 @@
  */
 
 .o-headline {
-  @include responsive-spacing(margin-bottom);
+  // margin-bottom: #{spacing-res()};
   text-align: center;
 
-  > :first-child {
-    margin-bottom: $global-spacing-unit-small;
-  }
+  // > :first-child {
+    // margin-bottom: #{spacing("small")};
+  // }
 
 }

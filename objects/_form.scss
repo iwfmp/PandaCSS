@@ -3,9 +3,9 @@
    ========================================================================== */
 
 :root {
-  --form-field-border-radius: 0;
+  --form-field-border-radius: #{$global-radius};
   --form-field-border: #{$global-border};
-  --form-field-spacing: #{$global-spacing-unit-small};
+  --form-field-spacing: #{spacing("small")};
 }
 
 /**
@@ -185,13 +185,14 @@
 
 
 /**
+ * Show the validation over the input
  * 1. Don't jump when showing the hint, in case there aren't other elements
  *    to fill the footer space.
  */
 
 .o-field__help {
-  // position: absolute; /* [1] */
-  margin-top: $global-spacing-unit-tiny;
+  position: absolute; /* [1] */
+  margin-top: #{spacing("tiny")};
 }
 
 

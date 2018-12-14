@@ -15,21 +15,20 @@
 // Tools
 // --------------------------------------------------------------------------
 
-@import "tools/clearfix";
-@import "tools/color-invert";
-@import "tools/font-face";
-@import "tools/font-size";
-@import "tools/invert";
-@import "tools/math";
+// Mixings, Functions, CSS Global Variables
+
+@import "tools/colors";
+@import "tools/functions";
 @import "tools/mq";
-@import "tools/responsive-font";
-@import "tools/responsive-spacing";
-@import "tools/strip-unit";
+@import "tools/spacings";
+@import "tools/typography";
 @import "tools/z-index";
 
 
 // Utilities
 // --------------------------------------------------------------------------
+
+// General Utilities used throughout the website via class names.
 
 @import "utilities/colors";
 @import "utilities/disabled";
@@ -44,7 +43,6 @@
 @import "utilities/no-scroll";
 @import "utilities/pos";
 @import "utilities/rhythm";
-@import "utilities/spacings";
 @import "utilities/truncate";
 @import "utilities/typography";
 @import "utilities/widths";
@@ -71,6 +69,7 @@
 // Elements
 // --------------------------------------------------------------------------
 
+@import "elements/bold";
 @import "elements/button";
 @import "elements/form";
 @import "elements/headings";

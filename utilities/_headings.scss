@@ -8,27 +8,13 @@
  * but we want it to be sized like an H1:
  *
  *   <h2 class="u-h1"></h2>
- *
  */
 
-$font-sizes: (
-  "h1":  58px,
-  "h2":  40px,
-  "h3":  32px,
-  "h4":  28px,
-  "h5":  20px,
-  "h6":  16px
-) !default;
-
-@each $name, $value in $font-sizes {
+@each $name, $value in $global-font-sizes {
 
   .u-#{$name} {
     @include font-size($value);
     text-align: inherit;
-
-    @if variable-exists(global-font-family-head) {
-      font-family: $global-font-family-head;
-    }
   }
 
 }

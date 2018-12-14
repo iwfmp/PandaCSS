@@ -2,6 +2,10 @@
    #CARD
    ========================================================================== */
 
+:root {
+  --card-spacing: #{spacing()};
+}
+
 /**
  * Elementary card cosmetic styling.
  *
@@ -12,12 +16,8 @@
  */
 
 .o-card {
-  @extend .u-rhythm;
-  background-color: $color-white;
-  border-radius: $global-radius;
-  box-shadow: $global-shadow;
   text-align: center;
-  padding: var(--box-spacing) 0;
+  // padding: var(--card-spacing) 0;
 }
 
 
@@ -29,5 +29,24 @@
 .o-card__header,
 .o-card__body,
 .o-card__footer {
-  padding: 0 var(--box-spacing);
+  // padding: 0 var(--card-spacing);
 }
+
+
+/**
+ * Card media should have some space
+ */
+
+.o-card__media {
+  margin-bottom: #{spacing("small")};
+}
+
+
+
+// /* ==========================================================================
+//    # STYLE VARIATION
+//    ========================================================================== */
+
+// .o-card--highlight {
+//   .o-card__header { margin: -#{spacing("small")} 0; }
+// }

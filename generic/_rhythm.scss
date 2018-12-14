@@ -2,10 +2,6 @@
    #RHYTHM
    ========================================================================== */
 
-:root {
-  --rhythm-spacing: #{$global-spacing-unit};
-}
-
 /**
  * Always declare margins in the same direction:
  * csswizardry.com/2012/06/single-direction-margin-declarations
@@ -23,7 +19,7 @@ table,
 fieldset {
 
   &:not(:last-child) {
-    margin-bottom: var(--rhythm-spacing);
+    margin-bottom: #{spacing("small")};
   }
 
 }
@@ -34,5 +30,5 @@ fieldset {
  */
 
 dd, ol, ul {
-  margin-left: var(--rhythm-spacing);
+  margin-left: #{spacing("small")};
 }

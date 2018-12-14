@@ -3,7 +3,7 @@
    ========================================================================== */
 
 :root {
-  --wrapper-spacing: #{$global-spacing-unit};
+  --wrapper-spacing: #{spacing-res()};;
   --wrapper-width: #{$global-container-width};
 }
 
@@ -13,7 +13,7 @@
  */
 
 .o-wrapper {
-  @extend .u-rhythm;
+  @extend .u-rhythm--large;
 
   padding-right: var(--wrapper-spacing);
   padding-left: var(--wrapper-spacing);
